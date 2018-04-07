@@ -5,14 +5,16 @@ import "github.com/LarsFox/diploma-bot/tg"
 const keysRow = 3
 
 var keyboardDefault = &tg.ReplyKeyboardMarkup{
-	ResizeKeyboard: true,
+	OneTimeKeyboard: true,
+	ResizeKeyboard:  true,
 	Keyboard: [][]tg.KeyboardButton{
 		{{Text: buttonEn}, {Text: buttonRu}},
 	},
 }
 
 var keyboardStars = &tg.ReplyKeyboardMarkup{
-	ResizeKeyboard: true,
+	OneTimeKeyboard: true,
+	ResizeKeyboard:  true,
 	Keyboard: [][]tg.KeyboardButton{
 		{{Text: button5Stars}},
 		{{Text: button4Stars}},
@@ -25,7 +27,8 @@ var keyboardStars = &tg.ReplyKeyboardMarkup{
 var keyboards = map[string]map[botKey]*tg.ReplyKeyboardMarkup{
 	"en": {
 		keyOkay: {
-			ResizeKeyboard: true,
+			OneTimeKeyboard: true,
+			ResizeKeyboard:  true,
 			Keyboard: [][]tg.KeyboardButton{
 				{{Text: buttonEnNoCanFinish}},
 				{{Text: buttonEnNoCanDo}},
@@ -35,7 +38,8 @@ var keyboards = map[string]map[botKey]*tg.ReplyKeyboardMarkup{
 		},
 
 		keyNoCanFinish: {
-			ResizeKeyboard: true,
+			OneTimeKeyboard: true,
+			ResizeKeyboard:  true,
 			Keyboard: [][]tg.KeyboardButton{
 				{{Text: buttonEnPrbSecurity}},
 				{{Text: buttonEnPrbUnavailable}},
@@ -48,7 +52,8 @@ var keyboards = map[string]map[botKey]*tg.ReplyKeyboardMarkup{
 		},
 
 		keyMoney: {
-			ResizeKeyboard: true,
+			OneTimeKeyboard: true,
+			ResizeKeyboard:  true,
 			Keyboard: [][]tg.KeyboardButton{
 				{{Text: buttonEnMoneyFull}},
 				{{Text: buttonEnCancel}},
@@ -56,19 +61,27 @@ var keyboards = map[string]map[botKey]*tg.ReplyKeyboardMarkup{
 		},
 
 		keyPrbAppCrash: {
-			ResizeKeyboard: true,
+			OneTimeKeyboard: true,
+			ResizeKeyboard:  true,
 			Keyboard: [][]tg.KeyboardButton{
 				{{Text: buttonEnYesItWorked}},
 				{{Text: buttonEnYesButNothing}},
 			},
 		},
 
-		keyPrbOther: nil,
+		keyPrbOther: {
+			OneTimeKeyboard: true,
+			ResizeKeyboard:  true,
+			Keyboard: [][]tg.KeyboardButton{
+				{{Text: buttonEnCancel}},
+			},
+		},
 	},
 
 	"ru": {
 		keyOkay: {
-			ResizeKeyboard: true,
+			OneTimeKeyboard: true,
+			ResizeKeyboard:  true,
 			Keyboard: [][]tg.KeyboardButton{
 				{{Text: buttonRuNoCanFinish}},
 				{{Text: buttonRuNoCanDo}},
@@ -78,7 +91,8 @@ var keyboards = map[string]map[botKey]*tg.ReplyKeyboardMarkup{
 		},
 
 		keyNoCanFinish: {
-			ResizeKeyboard: true,
+			OneTimeKeyboard: true,
+			ResizeKeyboard:  true,
 			Keyboard: [][]tg.KeyboardButton{
 				{{Text: buttonRuPrbSecurity}},
 				{{Text: buttonRuPrbUnavailable}},
@@ -91,7 +105,8 @@ var keyboards = map[string]map[botKey]*tg.ReplyKeyboardMarkup{
 		},
 
 		keyMoney: {
-			ResizeKeyboard: true,
+			OneTimeKeyboard: true,
+			ResizeKeyboard:  true,
 			Keyboard: [][]tg.KeyboardButton{
 				{{Text: buttonRuMoneyFull}},
 				{{Text: buttonRuCancel}},
@@ -99,13 +114,20 @@ var keyboards = map[string]map[botKey]*tg.ReplyKeyboardMarkup{
 		},
 
 		keyPrbAppCrash: {
-			ResizeKeyboard: true,
+			OneTimeKeyboard: true,
+			ResizeKeyboard:  true,
 			Keyboard: [][]tg.KeyboardButton{
 				{{Text: buttonRuYesItWorked}},
 				{{Text: buttonRuYesButNothing}},
 			},
 		},
 
-		keyPrbOther: nil,
+		keyPrbOther: {
+			OneTimeKeyboard: true,
+			ResizeKeyboard:  true,
+			Keyboard: [][]tg.KeyboardButton{
+				{{Text: buttonRuCancel}},
+			},
+		},
 	},
 }

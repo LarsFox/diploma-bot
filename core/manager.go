@@ -13,7 +13,6 @@ type Manager interface {
 
 type manager struct {
 	adminID  int
-	delays   map[int]int64
 	langs    map[int]string
 	ticket   int
 	tickets  map[int]int
@@ -24,7 +23,6 @@ type manager struct {
 func NewManager(tgClient tg.Client, adminID int) Manager {
 	return &manager{
 		adminID:  adminID,
-		delays:   make(map[int]int64),
 		langs:    map[int]string{adminID: "ru"},
 		tickets:  make(map[int]int),
 		tgClient: tgClient,

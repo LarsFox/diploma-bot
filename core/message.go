@@ -46,15 +46,16 @@ func (m *manager) handleMsg(msg *tg.Message) {
 	isProblem := stringInArray(msg.Text, problems) != -1
 	isPrbReq := stringInArray(msg.Text, problemsReqs) != -1
 	if isProblem || isPrbReq {
-		if delay, ok := m.delays[msg.Chat.ID]; ok {
+		if ticket, ok := m.tickets[msg.Chat.ID]; ok {
 			// If the help is on the way
-			if delay > time.Now().Unix() {
+			if ticket != 0 {
 				m.notifyAdmin(msg, language, keyHelpComing)
 				return
 			}
 		}
 		if isProblem {
-			m.delays[msg.Chat.ID] = time.Now().Unix() + 300
+			m.notifyAdmin(msg, language, replyKeys[msg.Text])
+			return
 		}
 	}
 

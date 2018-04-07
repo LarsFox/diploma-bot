@@ -36,11 +36,9 @@ var languages = map[string]string{
 var (
 	problems = []string{
 		buttonEnYesButNothing,
-		buttonEnPrbCannotSee,
 		buttonEnPrbSecurity,
 		buttonEnPrbUnavailable,
 		buttonRuYesButNothing,
-		buttonRuPrbCannotSee,
 		buttonRuPrbSecurity,
 		buttonRuPrbUnavailable,
 	}

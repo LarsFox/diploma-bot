@@ -5,7 +5,7 @@ var replyMsgs = map[string]map[botKey]string{
 		keyOkay:         "Okay! How can I help you?",
 		keyAcknowledged: "Your message has been sent to a support agent.",
 		keyContactSoon:  "Ok, a support agent will contact you soon.",
-		keyHelpComing:   "Your ticket `#%d` has been sent, the help is on its way!",
+		keyHelpComing:   "Your ticket `%d` has been sent, the help is on its way!",
 		keyNoCanFinish:  "What happened?",
 		keyNoTasks:      "It seems that your account has no reserved tasks so far! So there is no problem :)",
 
@@ -21,7 +21,7 @@ var replyMsgs = map[string]map[botKey]string{
 		keyOkay:         "Окей! Чем могу помочь?",
 		keyAcknowledged: "Ваше сообщение передано агенту поддержки.",
 		keyContactSoon:  "Хорошо, сейчас с Вами свяжется агент поддержки.",
-		keyHelpComing:   "Ваше обращение `#%d` записано, помощь уже в пути!",
+		keyHelpComing:   "Ваше обращение `%d` записано, помощь уже в пути!",
 		keyNoCanFinish:  "Что случилось?",
 		keyNoTasks:      "Похоже, на Ваш аккаунт не зарезервировано никаких заданий! Все в порядке :)",
 
