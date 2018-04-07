@@ -13,7 +13,8 @@ import (
 var (
 	app = cli.App("tgfinbot", "Launches a Test bot for my diploma project")
 
-	tgToken = app.StringOpt("tg-token", "", "Telegram Bot token")
+	tgToken   = app.StringOpt("tg-token", "", "Telegram Bot token")
+	tgAdminID = app.IntOpt("tg-admin-id", 0, "ID of the user, who will get all the input")
 )
 
 func init() {
@@ -30,6 +31,6 @@ func main() {
 
 func appAction() {
 	tgClient := tg.NewClient(*tgToken)
-	appManager := core.NewManager(tgClient)
+	appManager := core.NewManager(tgClient, *tgAdminID)
 	appManager.Listen()
 }

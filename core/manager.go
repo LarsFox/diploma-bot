@@ -12,14 +12,23 @@ type Manager interface {
 }
 
 type manager struct {
-	tgClient tg.Client
+	adminID  int
 	delays   map[int]int64
+	langs    map[int]string
+	ticket   int
+	tickets  map[int]int
+	tgClient tg.Client
 }
 
 // NewManager returns a new manager
-func NewManager(tgClient tg.Client) Manager {
-	delays := make(map[int]int64)
-	return &manager{tgClient: tgClient, delays: delays}
+func NewManager(tgClient tg.Client, adminID int) Manager {
+	return &manager{
+		adminID:  adminID,
+		delays:   make(map[int]int64),
+		langs:    map[int]string{adminID: "ru"},
+		tickets:  make(map[int]int),
+		tgClient: tgClient,
+	}
 }
 
 // Listen listens the incoming messages
@@ -29,7 +38,6 @@ func (m *manager) Listen() {
 	/*
 		TESTING AREA STARTS
 	*/
-
 	/*
 		TESTING AREA ENDS
 	*/

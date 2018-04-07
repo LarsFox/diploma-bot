@@ -27,7 +27,7 @@ type Update struct {
 type Response struct {
 	Ok          bool            `json:"ok"`
 	Result      json.RawMessage `json:"result"`
-	Description json.RawMessage `json:"description"` // only if not OK
+	Description string          `json:"description"` // only if not OK
 	ErrorCode   int             `json:"error_code"`
 }
 

@@ -79,14 +79,13 @@ func (c *client) makeGETRequest(uri string) (*Response, error) {
 	return resp, nil
 }
 
-func (c *client) makeTelegramRequest(methodName, fileKey, fileName string, file []byte,
-	fields map[string]string) (*Response, error) {
+func (c *client) makeTelegramRequest(methodName, fileKey, fileName string, file []byte, fields map[string]string) (*Response, error) {
 	uri := fmt.Sprintf("https://api.telegram.org/bot%s/"+methodName, c.token)
 	resp, err := c.makePOSTRequest(uri, fileKey, fileName, file, fields)
 
 	if !resp.Ok {
 		err = fmt.Errorf("Tg error %d", resp.ErrorCode)
-		return nil, err
+		return resp, err
 	}
 	return resp, nil
 }
@@ -149,8 +148,7 @@ func (c *client) SendAudio(chatID int, audio []byte) (*Response, error) {
 }
 
 // Sends a message
-func (c *client) SendMessage(chatID int, text, parse string,
-	keyboard *ReplyKeyboardMarkup) (*Response, error) {
+func (c *client) SendMessage(chatID int, text, parse string, keyboard *ReplyKeyboardMarkup) (*Response, error) {
 	var key string
 	if keyboard != nil {
 		data, err := json.Marshal(keyboard)
