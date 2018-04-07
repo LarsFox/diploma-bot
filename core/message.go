@@ -104,7 +104,7 @@ func (m *manager) handleMsg(msg *tg.Message) {
 		}
 
 		m.tgClient.SendMessage(replyID, custom[m.langs[replyID]][keyTicketClosed], markdown, keyboardStars)
-		m.tgClient.SendMessage(m.adminID, fmt.Sprintf("%d: ✔", m.tickets[replyID]), markdown, nil)
+		m.tgClient.SendMessage(m.adminID, fmt.Sprintf("%d: ✅", m.tickets[replyID]), markdown, nil)
 		m.tickets[replyID] = 0
 	}
 }
