@@ -117,21 +117,20 @@ func (m *manager) notifyAdmin(msg *tg.Message, language string, key botKey) {
 		return
 	}
 
-	text := fmt.Sprintf("%d %s %s %s\n%s\n\n/close_%d", msg.Chat.ID, msg.Chat.FirstName, msg.Chat.LastName, language, msg.Text, msg.Chat.ID)
-	m.tgClient.SendMessage(m.adminID, text, "", nil)
-
 	ticket, ok := m.tickets[msg.Chat.ID]
 	if !ok {
 		m.tickets[msg.Chat.ID] = 0
 		ticket = 0
 	}
-	if ticket != 0 {
-		return
+
+	if ticket == 0 {
+		m.ticket++
+		ticket = m.ticket
+		m.tickets[msg.Chat.ID] = ticket
+		reply := replyMsgs[language][key] + fmt.Sprintf(custom[language][keyTicket], ticket)
+		m.tgClient.SendMessage(msg.Chat.ID, reply, markdown, keyboards[language][keyOkay])
 	}
 
-	m.ticket++
-	ticket = m.ticket
-	m.tickets[msg.Chat.ID] = ticket
-	reply := replyMsgs[language][key] + fmt.Sprintf(custom[language][keyTicket], ticket)
-	m.tgClient.SendMessage(msg.Chat.ID, reply, markdown, keyboards[language][keyOkay])
+	text := fmt.Sprintf("%d %d %s %s %s %s_%d\n%s", ticket, msg.Chat.ID, msg.Chat.FirstName, msg.Chat.LastName, language, cmdClose, msg.Chat.ID, msg.Text)
+	m.tgClient.SendMessage(m.adminID, text, "", nil)
 }
